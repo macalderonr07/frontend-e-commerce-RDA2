@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lista de cotización — Comercial Elite</title>
+        <meta
+            name="description"
+            content="Revisa, edita y envía tu lista de cotización de insumos de Comercial Elite por WhatsApp o correo.">
+        <link rel="canonical" href="https://www.comercialelite.com/carrito.html">
+        <link rel="icon" href="assets/img/logo-64.png" type="image/png">
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="js/tailwind-config.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body
+        class="bg-elite-crema font-sans leading-[1.55] text-elite-text antialiased dark:bg-elitenight-bg dark:text-elitenight-text"
+    >
+        <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+        <header class="sticky top-0 z-50 bg-elite-ink">
+            <div class="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-5 px-4 py-2.5">
+                <a class="inline-flex items-center gap-3 no-underline" href="index.html">
+                    <img
+                        class="h-14 w-14 shrink-0"
+                        src="assets/img/logo-56.webp"
+                        srcset="assets/img/logo-56.webp 1x, assets/img/logo-112.webp 2x"
+                        alt=""
+                        width="56"
+                        height="56">
+                    <span class="text-lg font-bold tracking-wide text-white">Comercial Elite</span>
+                </a>
+                <nav class="flex flex-wrap items-center gap-2" aria-label="Principal">
+                    <button
+                        type="button"
+                        class="inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-lg border border-white/30 bg-white/10 px-3 font-semibold text-white md:hidden"
+                        id="botonMenu"
+                        aria-expanded="false"
+                        aria-controls="listaNav"
+                    >
+                        <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                            class="h-5 w-5 shrink-0"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        Menú
+                    </button>
+                    <ul
+                        class="hidden w-full flex-col gap-1 border-t border-white/15 pt-3 md:flex md:w-auto md:flex-row md:gap-2 md:border-0 md:pt-0"
+                        id="listaNav"
+                    >
+                        <li>
+                            <a
+                                class="flex min-h-11 items-center rounded-full px-4 font-semibold text-elite-lime no-underline hover:bg-white/10"
+                                href="index.html"
+                                >Inicio</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                class="flex min-h-11 items-center rounded-full px-4 font-semibold text-elite-lime no-underline hover:bg-white/10"
+                                href="catalogo.html"
+                                >Catálogo</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                class="flex min-h-11 items-center rounded-full px-4 font-semibold text-elite-lime no-underline hover:bg-white/10"
+                                href="nosotros.html"
+                                >Nosotros</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+                <a
+                    class="relative inline-flex min-h-11 items-center gap-1.5 font-semibold text-white no-underline hover:text-elite-lime"
+                    href="carrito.html"
+                    id="enlaceCarrito"
+                    aria-label="Lista de cotización, 0 productos"
+                    aria-current="page"
+                >
+                    <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                        class="h-5 w-5 shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <rect x="5" y="4" width="14" height="17" rx="2" />
+                        <path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3" />
+                    </svg>
+                    Lista de cotización
+                    <span
+                        class="ml-1 inline-flex min-h-6 min-w-6 items-center justify-center rounded-full bg-elite-lime px-1.5 text-sm font-bold text-elite-ink"
+                        id="contadorCarrito"
+                        aria-hidden="true"
+                        >0</span
+                    >
+                </a>
+                <a
+                    class="inline-flex min-h-11 items-center gap-1.5 font-semibold text-white no-underline hover:text-elite-lime"
+                    href="tel:+593987855906"
+                >
+                    <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                        class="h-5 w-5 shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"
+                        />
+                    </svg>
+                    098&nbsp;785&nbsp;5906
+                </a>
+            </div>
+        </header>
+
+        <main id="contenido">
+            <nav class="mx-auto max-w-6xl px-4 py-3 text-sm" aria-label="Miga de pan">
+                <ol class="flex flex-wrap gap-1.5">
+                    <li
+                        class="after:mx-1.5 after:text-elite-border after:content-['›'] last:after:content-none dark:after:text-elitenight-border"
+                    >
+                        <a href="index.html">Inicio</a>
+                    </li>
+                    <li class="font-semibold" aria-current="page">Lista de cotización</li>
+                </ol>
+            </nav>
+
+            <div class="mx-auto max-w-6xl px-4 pb-14">
+                <h1 class="text-3xl font-bold md:text-4xl">Tu lista de cotización</h1>
+                <p class="max-w-2xl">
+                    Arma aquí tu pedido y envíalo por WhatsApp o correo. No hay pago en línea: Comercial Elite te
+                    responde con la cotización final.
+                </p>
+
+                <p
+                    class="mt-3 rounded-lg border-2 border-error bg-error-tint p-4 font-semibold text-error dark:border-error-dark dark:bg-error-darktint dark:text-error-dark"
+                    id="avisoAlmacenamiento"
+                    role="alert"
+                    hidden
+                ></p>
+
+                <div class="grid items-start gap-8 s55:grid-cols-[1fr_20rem]">
+                    <div>
+                        <p id="carritoVacio" hidden>
+                            Tu lista de cotización está vacía. <a href="catalogo.html">Ver catálogo</a>.
+                        </p>
+
+                        <ul class="flex flex-col gap-4" id="listaCarrito" aria-live="polite"></ul>
+
+                        <p class="mt-5">
+                            <button
+                                type="button"
+                                class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border-2 border-error px-6 py-2.5 font-bold text-error transition-colors hover:bg-error-tint dark:border-error-dark dark:text-error-dark dark:hover:bg-error-darktint"
+                                id="botonVaciarCarrito"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    viewBox="0 0 24 24"
+                                    class="h-5 w-5 shrink-0"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path
+                                        d="M3 6h18M8 6V4h8v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"
+                                    />
+                                </svg>
+                                Vaciar lista
+                            </button>
+                        </p>
+
+                        <section class="mt-10" id="seccionHistorial" aria-labelledby="titulo-historial" hidden>
+                            <h2 class="text-xl font-bold" id="titulo-historial">Historial de cotizaciones enviadas</h2>
+                            <p
+                                class="mb-3 font-semibold empty:hidden"
+                                id="estadoHistorial"
+                                role="status"
+                                aria-live="polite"
+                            ></p>
+                            <p class="mb-0" id="avisoHistorial" role="alert" hidden>
+                                No se pudo cargar el historial de cotizaciones en este navegador.
+                            </p>
+                            <ul class="flex flex-col gap-2" id="listaHistorial"></ul>
+                        </section>
+                    </div>
+
+                    <aside class="flex flex-col gap-5">
+                        <div
+                            class="rounded-lg border-2 border-elite-cuero bg-elite-cuerotint p-5 dark:border-elitenight-cuero dark:bg-elitenight-cuerotint"
+                        >
+                            <p class="mb-1.5 font-semibold" id="contadorItemsCarrito">0 productos</p>
+                            <p class="mb-0 font-semibold">Total referencial</p>
+                            <p
+                                class="mb-1.5 text-2xl font-bold text-elite-cuero dark:text-elitenight-cuero"
+                                id="totalCarrito"
+                                aria-live="polite"
+                            >
+                                $0.00
+                            </p>
+                            <p class="mb-1.5 text-sm font-semibold text-elite-dark dark:text-elitenight-dark" id="ahorroCarrito" hidden></p>
+                            <p class="mb-0 text-sm" id="notaTotal">
+                                IVA incluido. El valor final te lo confirma Comercial Elite al responder tu cotización.
+                            </p>
+                        </div>
+
+                        <p class="mb-0 text-sm" id="ultimaActualizacion"></p>
+
+                        <form id="formularioCheckout" novalidate>
+                            <h2 class="text-xl font-bold">Solicitar cotización</h2>
+                            <p
+                                class="mb-5 rounded-lg border-2 border-elite-dark bg-elite-tint p-4 dark:border-elitenight-dark dark:bg-elitenight-tint"
+                                id="estadoCheckout"
+                                role="alert"
+                                hidden
+                            ></p>
+
+                            <div class="campo mb-5">
+                                <label class="mb-1.5 block font-bold" for="nombreCheckout"
+                                    >Nombre o empresa que cotiza</label
+                                >
+                                <input
+                                    class="min-h-11 w-full rounded-lg border-2 border-elite-borderstrong bg-white px-3 py-2 text-elite-text focus-visible:border-elite-dark dark:border-elitenight-border dark:bg-elitenight-bg dark:text-elitenight-text dark:focus-visible:border-elitenight-dark"
+                                    type="text"
+                                    id="nombreCheckout"
+                                    name="nombre"
+                                    autocomplete="organization"
+                                    required
+                                    aria-describedby="indicacionNombreCheckout errorNombreCheckout">
+                                <span class="mt-1.5 block text-sm" id="indicacionNombreCheckout"
+                                    >Por ejemplo: María Pérez o Calzado 2000 Cía. Ltda.</span
+                                >
+                                <span
+                                    class="mt-1.5 block text-sm font-semibold text-error empty:hidden dark:text-error-dark"
+                                    id="errorNombreCheckout"
+                                ></span>
+                            </div>
+
+                            <div class="campo mb-5">
+                                <label class="mb-1.5 block font-bold" for="correoCheckout">Correo electrónico</label>
+                                <input
+                                    class="min-h-11 w-full rounded-lg border-2 border-elite-borderstrong bg-white px-3 py-2 text-elite-text focus-visible:border-elite-dark dark:border-elitenight-border dark:bg-elitenight-bg dark:text-elitenight-text dark:focus-visible:border-elitenight-dark"
+                                    type="email"
+                                    id="correoCheckout"
+                                    name="correo"
+                                    autocomplete="email"
+                                    required
+                                    aria-describedby="errorCorreoCheckout">
+                                <span
+                                    class="mt-1.5 block text-sm font-semibold text-error empty:hidden dark:text-error-dark"
+                                    id="errorCorreoCheckout"
+                                ></span>
+                            </div>
+
+                            <div class="campo mb-5">
+                                <label class="mb-1.5 block font-bold" for="telefonoCheckout">
+                                    Teléfono <span class="text-sm font-normal">(opcional)</span>
+                                </label>
+                                <input
+                                    class="min-h-11 w-full rounded-lg border-2 border-elite-borderstrong bg-white px-3 py-2 text-elite-text focus-visible:border-elite-dark dark:border-elitenight-border dark:bg-elitenight-bg dark:text-elitenight-text dark:focus-visible:border-elitenight-dark"
+                                    type="tel"
+                                    id="telefonoCheckout"
+                                    name="telefono"
+                                    autocomplete="tel"
+                                    placeholder="098 785 5906"
+                                    aria-describedby="indicacionTelefonoCheckout errorTelefonoCheckout">
+                                <span class="mt-1.5 block text-sm" id="indicacionTelefonoCheckout"
+                                    >Entre 7 y 10 dígitos. Puedes escribirlo con espacios, guiones o con +593.</span
+                                >
+                                <span
+                                    class="mt-1.5 block text-sm font-semibold text-error empty:hidden dark:text-error-dark"
+                                    id="errorTelefonoCheckout"
+                                ></span>
+                            </div>
+
+                            <div class="campo mb-5">
+                                <label class="mb-1.5 block font-bold" for="mensajeCheckout">
+                                    Mensaje u observaciones <span class="text-sm font-normal">(opcional)</span>
+                                </label>
+                                <textarea
+                                    class="min-h-24 w-full rounded-lg border-2 border-elite-borderstrong bg-white px-3 py-2 text-elite-text focus-visible:border-elite-dark dark:border-elitenight-border dark:bg-elitenight-bg dark:text-elitenight-text dark:focus-visible:border-elitenight-dark"
+                                    id="mensajeCheckout"
+                                    name="mensaje"
+                                    rows="3"
+                                    maxlength="200"
+                                    aria-describedby="indicacionMensajeCheckout"
+                                ></textarea>
+                                <span class="mt-1.5 block text-sm" id="indicacionMensajeCheckout"
+                                    >Por ejemplo: necesito factura, retiro en el local o una consulta sobre un producto. Hasta 200 caracteres.</span
+                                >
+                            </div>
+
+                            <div class="mb-5 flex min-h-11 items-start gap-3">
+                                <input
+                                    class="mt-0.5 h-5 w-5 shrink-0 accent-elite-dark dark:accent-elitenight-dark"
+                                    type="checkbox"
+                                    id="recordarDatosCheckout"
+                                    name="recordar"
+                                    aria-describedby="indicacionRecordarCheckout">
+                                <div>
+                                    <label class="font-semibold" for="recordarDatosCheckout"
+                                        >Recordar mis datos en este dispositivo</label
+                                    >
+                                    <span class="block text-sm" id="indicacionRecordarCheckout"
+                                        >Guarda solo tu correo y teléfono en este navegador, para no volver a escribirlos.</span
+                                    >
+                                    <!-- Mientras no exista la configuración de la cuenta de usuario
+                                         (donde vivirán los datos del cliente, ya en la base), este es
+                                         el único lugar para borrar lo recordado: aparece solo si hay algo guardado. -->
+                                    <button
+                                        type="button"
+                                        class="mt-1 min-h-11 text-sm font-semibold text-elite underline underline-offset-2 dark:text-elitenight"
+                                        id="botonOlvidarDatos"
+                                        hidden
+                                    >
+                                        Olvidar mis datos guardados
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-3">
+                                <button
+                                    type="submit"
+                                    class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-elite-lime px-6 py-2.5 font-bold text-elite-ink no-underline transition hover:brightness-90 active:brightness-75"
+                                    id="botonEnviarWhatsApp"
+                                >
+                                    Enviar por WhatsApp
+                                </button>
+                                <button
+                                    type="button"
+                                    class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border-2 border-elite-borderstrong bg-white px-6 py-2.5 font-bold text-elite-ink no-underline transition-colors hover:bg-elite-tint dark:border-elitenight-border dark:bg-elitenight-bg dark:text-elitenight-text dark:hover:bg-elitenight-tint"
+                                    id="botonEnviarCorreo"
+                                >
+                                    Enviar por correo
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Cierre del flujo dentro del sitio (auditoría IHC, H2): el sitio no sabe si
+               el mensaje salió de WhatsApp o del correo, así que se lo pregunta al
+               usuario en vez de vaciar la lista por su cuenta. -->
+                        <section
+                            class="rounded-lg border-2 border-elite-dark bg-elite-tint p-5 dark:border-elitenight-dark dark:bg-elitenight-tint"
+                            id="confirmacionEnvio"
+                            aria-labelledby="tituloConfirmacionEnvio"
+                            hidden
+                        >
+                            <h2 class="text-xl font-bold" id="tituloConfirmacionEnvio" tabindex="-1">
+                                ¿Enviaste tu lista de cotización?
+                            </h2>
+                            <p id="textoConfirmacionEnvio">
+                                Tu lista se conserva hasta que nos confirmes que el mensaje salió.
+                            </p>
+                            <div class="flex flex-col gap-3">
+                                <button
+                                    type="button"
+                                    class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-elite-ink px-6 py-2.5 font-bold text-white transition hover:bg-elite-dark dark:bg-elitenight-dark dark:text-elitenight-ink dark:hover:brightness-90"
+                                    id="botonConfirmarEnvio"
+                                >
+                                    Sí, ya la envié: vaciar la lista
+                                </button>
+                                <button
+                                    type="button"
+                                    class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border-2 border-elite-borderstrong bg-white px-6 py-2.5 font-bold text-elite-ink transition-colors hover:bg-elite-tint dark:border-elitenight-border dark:bg-elitenight-bg dark:text-elitenight-text dark:hover:bg-elitenight-tint"
+                                    id="botonConservarLista"
+                                >
+                                    No, conservar la lista
+                                </button>
+                            </div>
+                        </section>
+
+                        <p class="mb-0 text-sm">
+                            ¿Prefieres negociar?
+                            <a href="tel:+593987855906">Llamar&nbsp;al&nbsp;098&nbsp;785&nbsp;5906</a>
+                        </p>
+                    </aside>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-elite-ink py-8 text-white dark:bg-elitenight-tint dark:text-elitenight-text">
+            <div class="mx-auto grid max-w-6xl gap-8 px-4 s45:grid-cols-3">
+                <div>
+                    <h2 class="flex items-center gap-2 text-white dark:text-elitenight-dark">
+                        <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                            class="h-5 w-5 shrink-0"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                        >
+                            <path d="M18.14,8.7 A7.5,7.5 0 1 1 5.86,8.7" />
+                            <circle cx="18.14" cy="8.7" r="0.9" fill="currentColor" stroke="none" />
+                            <circle cx="5.86" cy="8.7" r="0.9" fill="currentColor" stroke="none" />
+                        </svg>
+                        Comercial Elite
+                    </h2>
+                    <address class="not-italic">
+                        Calle Esmeraldas y Venezuela, Quito, Ecuador<br>
+                        <a
+                            class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark"
+                            href="tel:+593987855906"
+                            >098&nbsp;785&nbsp;5906</a
+                        >
+                        (WhatsApp)<br>
+                        <a
+                            class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark"
+                            href="mailto:comercialelite313@gmail.com"
+                            >comercialelite313@gmail.com</a
+                        >
+                    </address>
+                </div>
+                <div>
+                    <h2 class="text-white dark:text-elitenight-dark">Horario</h2>
+                    <ul>
+                        <li>Lunes a viernes: 06:30 – 17:30</li>
+                        <li>Sábado: 07:00 – 13:30</li>
+                    </ul>
+                    <p class="mb-0">
+                        <a
+                            class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark"
+                            href="assets/catalogo.pdf"
+                            >Descargar catálogo (PDF, 1 KB)</a
+                        >
+                    </p>
+                </div>
+                <div>
+                    <h2 class="text-white dark:text-elitenight-dark">Síguenos</h2>
+                    <ul class="flex flex-wrap gap-3">
+                        <li>
+                            <a
+                                class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark"
+                                href="https://www.facebook.com/comercialelite"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Facebook <span class="sr-only">(se abre en una pestaña nueva)</span></a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark"
+                                href="https://www.instagram.com/comercialelite"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Instagram <span class="sr-only">(se abre en una pestaña nueva)</span></a
+                            >
+                        </li>
+                    </ul>
+                    <p class="mb-0">
+                        <a
+                            class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark"
+                            href="nosotros.html#comprar-en-persona"
+                            >Cómo llegar y comprar en persona</a
+                        >
+                    </p>
+                </div>
+            </div>
+            <div class="mx-auto mt-8 max-w-6xl border-t border-white/25 px-4 pt-5 text-sm">
+                <p class="mb-0">© 2026 Comercial Elite. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+        <script src="js/storage.js"></script>
+        <script src="js/api.js"></script>
+        <script src="js/validacion.js"></script>
+        <script src="js/encabezado.js"></script>
+        <script src="js/menu.js"></script>
+        <script src="js/carrito.js"></script>
+    </body>
+</html>

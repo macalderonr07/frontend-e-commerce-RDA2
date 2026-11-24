@@ -1,0 +1,28 @@
+# Análisis estático de seguridad del JavaScript (CodeQL): inyección, XSS,
+# rutas sin validar, secretos en el código, etc. Gratis en repositorios públicos;
+# los hallazgos quedan en la pestaña Security > Code scanning.
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "17 6 * * 1"
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  analizar:
+    name: Analizar JavaScript
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-and-quality
+      - uses: github/codeql-action/analyze@v3

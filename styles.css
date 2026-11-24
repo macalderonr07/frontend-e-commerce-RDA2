@@ -1,0 +1,551 @@
+/* Verde de acento según el modo (lo usa el token elite-lime de Tailwind):
+   en claro, salvia suave para no encandilar sobre la crema; en oscuro, el lima
+   del logo. Canales RGB para que funcione la opacidad de Tailwind (/50...). */
+:root {
+  --elite-lime: 184 216 138; /* #B8D88A */
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --elite-lime: 147 220 29; /* #93DC1D */
+  }
+}
+
+/* ==========================================================================
+   COMERCIAL ELITE — capa base sobre Tailwind (Play CDN)
+   ==========================================================================
+   Identidad visual reconstruida a partir de assets/img/logo.png: el verde
+   lima (#93DC1D) y el negro del sello son el punto de partida de toda la
+   paleta. El resto de tonos NO son arbitrarios: se calcularon en el mismo
+   matiz del logo (H≈83°) subiendo/bajando luminosidad hasta cumplir WCAG 2.2
+   nivel AA. Contrastes verificados (fórmula de luminancia relativa de WCAG):
+
+     Modo claro (fondo crema #F6F0E1 · superficies papel #FFFBF2 / tinte #E9F4D7).
+     Las cifras de abajo se midieron sobre blanco; sobre crema: elite 5.17,
+     elite-medium 7.71, elite-dark 10.88, borderstrong 3.08, cuero 5.40 (todas AA).
+     En claro el lima de fondo es salvia #B8D88A (variable --elite-lime).
+       elite            #4E6E1C   5.88:1 sobre blanco · 5.15:1 sobre tinte   -> enlaces, texto interactivo
+       elite-medium      #3A5214  8.76:1 sobre blanco                        -> hover/active de enlaces y botones outline
+       elite-dark        #2B3913  12.37:1 sobre blanco                       -> encabezados, foco visible
+       elite-lime        #93DC1D  12.50:1 con texto NEGRO (#000/ink)         -> SOLO fondo de insignias/botones, nunca texto sobre blanco
+       elite-borderstrong #719438 3.50:1 sobre blanco                        -> borde de campos/checkboxes (WCAG 1.4.11, no decorativo)
+       elite-border      #A7C577  1.93:1 sobre blanco                        -> separadores puramente decorativos (nunca el único indicador)
+       elite-ink         #14170F  18.12:1 con blanco                         -> cabecera/pie, superficie "negra" del sello
+
+     Modo oscuro (fondo #0D100A / tinte #273414)
+       elitenight        #74A91E  6.79:1 sobre fondo · 4.68:1 sobre tinte
+       elitenight-medium #90C639  9.42:1 sobre fondo · 6.50:1 sobre tinte
+       elitenight-dark   #A6D161  10.87:1 sobre fondo · 7.50:1 sobre tinte
+       elitenight-border #5E7538  3.72:1 sobre fondo                        -> también sirve como borde de campos (ya cumple 1.4.11)
+
+     Acento "cuero" (carrito/precios): Comercial Elite vende cuero, así que el precio
+     y los totales del carrito usan un tono cálido derivado del propio producto en vez
+     de reutilizar el verde de marca para todo. Contraste verificado igual que arriba:
+       elite-cuero        #845830  5.95:1 sobre papel · 5.38:1 sobre tint · 4.92:1 sobre cuerotint -> precio y totales
+                          (antes #8B5E34: 4.49:1 sobre cuerotint, debajo de AA)
+       elitenight-cuero   #D9A066  8.37:1 sobre fondo oscuro · 5.78:1 sobre tinte oscuro
+       elite-cuerotint    #F2E4D4  fondo decorativo de caja de totales (no crítico, no lleva texto pequeño encima sin los colores de arriba)
+       elitenight-cuerotint #2E2013  equivalente oscuro de elite-cuerotint
+
+   Principios de IHC aplicados en este archivo y en las utilidades de Tailwind
+   del HTML (ver comentarios en cada página):
+     - Ley de Fitts: objetivos táctiles/clic >= 44px (min-h-11 / min-w-11).
+     - Ley de Hick: navegación a 4 opciones, filtros agrupados por categoría.
+     - Gestalt (proximidad/similitud): tarjetas con mismo marco visual
+       (borde + verde lima) para agrupar por función, no solo por color.
+     - Reconocimiento antes que recuerdo: la insignia del logo se repite como
+       ícono de herradura en vez de inventar un ícono distinto por sección.
+     - Visibilidad del estado del sistema: foco visible propio, estados
+       hover/active con retroalimentación de color, aria-live en catálogo.
+     - No depender solo del color (WCAG 1.4.1): el enlace activo del menú no
+       solo cambia de color, cambia de forma (píldora rellena) y lleva
+       aria-current="page"; los enlaces de texto llevan subrayado.
+   ========================================================================== */
+
+/* Enlace "Saltar al contenido": primer elemento tabulable (WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  z-index: 1000;
+  background: #14170f;
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.18s ease;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* Foco visible propio: nunca outline:none sin reemplazo (WCAG 2.4.7) */
+:focus-visible {
+  outline: 3px solid #2b3913;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
+  border-radius: 2px;
+}
+
+/* Encabezados: misma paleta y ritmo vertical en todo el sitio */
+h1,
+h2,
+h3,
+h4 {
+  color: #2b3913;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  margin: 0 0 0.75rem;
+}
+
+p {
+  margin: 0 0 1.25rem;
+}
+
+/* Enlaces: subrayado por defecto (WCAG 1.4.1, no depender solo del color),
+   verde de marca, oscurece al pasar el cursor o al enfocar. Los enlaces que
+   no deben llevar subrayado (nav, botones, tarjetas) lo quitan con la
+   utilidad "no-underline" de Tailwind. */
+a {
+  color: #4e6e1c;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;
+}
+
+a:hover,
+a:focus-visible {
+  color: #2b3913;
+}
+
+@media (prefers-color-scheme: dark) {
+  .skip-link {
+    background: #a6d161;
+    color: #0d100a;
+  }
+
+  :focus-visible {
+    outline-color: #a6d161;
+    box-shadow: 0 0 0 2px #0d100a;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #a6d161;
+  }
+
+  a {
+    color: #74a91e;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: #a6d161;
+  }
+}
+
+/* ==========================================================================
+   Portada: carrusel de novedades
+   ==========================================================================
+   Accesibilidad:
+   - El texto nunca depende de la foto: va sobre una capa sólida de tinta
+     (#14170F) que se desvanece solo hacia el lado de la imagen. En móvil la
+     foto va arriba y el texto debajo, sobre fondo sólido.
+   - Solo la diapositiva activa es visible (las demás llevan [hidden]), así el
+     lector de pantalla y el teclado no recorren contenido oculto.
+   ========================================================================== */
+.carrusel-marco {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1.25rem;
+  background: #14170f;
+}
+
+.carrusel-respaldo {
+  margin: 0;
+  padding: 1.5rem;
+}
+
+.carrusel-respaldo a {
+  color: #fff;
+}
+
+.diapositiva {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.diapositiva-foto {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.diapositiva-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.diapositiva-texto {
+  position: relative;
+  z-index: 1;
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.diapositiva-numero {
+  display: none;
+}
+
+/* Botones redondos: anterior / siguiente / pausa (>= 44 px, Ley de Fitts) */
+.carrusel-boton {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 9999px;
+  background: rgba(20, 23, 15, 0.8);
+  color: #fff;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+}
+
+.carrusel-boton:hover {
+  background: #2b3913;
+}
+
+.carrusel-pausa {
+  top: 0.75rem;
+  right: 0.75rem;
+  padding-inline: 1rem;
+}
+
+/* En móvil las flechas van sobre la foto (mitad superior) */
+.carrusel-anterior,
+.carrusel-siguiente {
+  top: calc((100vw - 2rem) * 9 / 32);
+  transform: translateY(-50%);
+}
+
+.carrusel-anterior {
+  left: 0.75rem;
+}
+
+.carrusel-siguiente {
+  right: 0.75rem;
+}
+
+.carrusel-miniaturas {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1rem 0 0;
+  padding: 0.25rem 0.25rem 0.5rem;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+}
+
+.carrusel-miniaturas li {
+  flex: 0 0 9.5rem;
+  scroll-snap-align: start;
+}
+
+.carrusel-miniaturas button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #e9f4d7;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.carrusel-miniaturas img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 0.4rem;
+  border: 3px solid transparent;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.carrusel-miniaturas button:hover img,
+.carrusel-miniaturas button[aria-current="true"] img {
+  opacity: 1;
+}
+
+/* La miniatura activa no depende solo del color: además del borde lima, la
+   foto deja de estar atenuada y el nombre pasa a negrita blanca. */
+.carrusel-miniaturas button[aria-current="true"] {
+  color: #fff;
+  font-weight: 800;
+}
+
+.carrusel-miniaturas button[aria-current="true"] img {
+  border-color: rgb(var(--elite-lime));
+}
+
+@media (min-width: 48em) {
+  .diapositiva {
+    display: block;
+    min-height: 26rem;
+  }
+
+  .diapositiva-foto {
+    position: absolute;
+    inset: 0 0 0 30%;
+    aspect-ratio: auto;
+  }
+
+  /* Capa sólida a la izquierda, donde va el texto */
+  .diapositiva-foto::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #14170f 0%, rgba(20, 23, 15, 0.85) 25%, rgba(20, 23, 15, 0.1) 70%);
+  }
+
+  .diapositiva-texto {
+    max-width: 36rem;
+    padding: 4rem 2rem 2.5rem 5.5rem;
+  }
+
+  .diapositiva-numero {
+    position: absolute;
+    right: 5.5rem;
+    bottom: 0.5rem;
+    z-index: 1;
+    display: block;
+    color: transparent;
+    font-size: 8rem;
+    font-weight: 800;
+    line-height: 1;
+    -webkit-text-stroke: 2px rgb(var(--elite-lime));
+    opacity: 0.8;
+  }
+
+  .carrusel-anterior,
+  .carrusel-siguiente {
+    top: 50%;
+  }
+
+  .carrusel-anterior {
+    left: 1rem;
+  }
+
+  .carrusel-siguiente {
+    right: 1rem;
+  }
+
+  .carrusel-miniaturas li {
+    flex-basis: 11rem;
+  }
+}
+
+/* ==========================================================================
+   Portada: "Explora por línea" (tarjetas diagonales)
+   ==========================================================================
+   - Móvil: rejilla de 2 columnas de tarjetas verticales; desde 40em, 4 columnas.
+   - Desde 80em: una fila de 8 tarjetas inclinadas (skew) que se ensanchan al
+     recibir cursor o foco. El contenido se "desinclina" para leerse recto.
+   - Todas usan el mismo fondo (#14170F): la foto diferencia cada línea
+     (auditoría IHC, H12) y el texto va sobre un degradado sólido de tinta, así
+     su contraste no depende de la imagen.
+   ========================================================================== */
+.categorias {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.categoria {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  border-radius: 1rem;
+  background: #14170f;
+}
+
+.categoria:focus-within {
+  outline: 3px solid #2b3913;
+  outline-offset: 3px;
+}
+
+.categoria a,
+.categoria a:hover,
+.categoria a:focus-visible {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.categoria-foto {
+  position: absolute;
+  inset: 0;
+}
+
+.categoria-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.categoria-foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #14170f 0%, rgba(20, 23, 15, 0.92) 30%, rgba(20, 23, 15, 0) 65%);
+}
+
+.categoria-texto {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.9rem;
+  left: 0.9rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.categoria-detalle {
+  color: #a6d161;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.categoria h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.categoria-cantidad {
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.categoria a:hover .categoria-foto img,
+.categoria a:focus-visible .categoria-foto img {
+  transform: scale(1.06);
+}
+
+@media (min-width: 40em) {
+  .categorias {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 80em) {
+  .categorias {
+    --inclinacion: -10deg;
+    display: flex;
+    gap: 0.6rem;
+    height: 28rem;
+    padding-inline: 2.5rem;
+  }
+
+  .categoria {
+    flex: 1 1 0;
+    min-width: 0;
+    aspect-ratio: auto;
+    transform: skewX(var(--inclinacion));
+    transition: flex-grow 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  /* La foto y el texto se enderezan; la foto es más ancha para cubrir las
+     esquinas que deja la inclinación. */
+  .categoria-foto {
+    inset: 0 -40%;
+    transform: skewX(calc(var(--inclinacion) * -1));
+  }
+
+  /* El borde izquierdo inclinado avanza hacia la derecha al bajar, así que el
+     texto (que va abajo) arranca más adentro para no quedar recortado. */
+  .categoria-texto {
+    right: 0.4rem;
+    bottom: 1.1rem;
+    left: 1.9rem;
+    transform: skewX(calc(var(--inclinacion) * -1));
+  }
+
+  .categoria:focus-within {
+    flex-grow: 1.7;
+  }
+}
+
+/* El ensanche por cursor solo donde existe un puntero real */
+@media (min-width: 80em) and (hover: hover) {
+  .categoria:hover {
+    flex-grow: 1.7;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .categoria:focus-within {
+    outline-color: #a6d161;
+  }
+}
+
+/* Banda de cierre con borde superior diagonal (superpuesta a la sección previa) */
+.corte-arriba {
+  --corte: 2.5rem;
+  margin-top: calc(var(--corte) * -1);
+  padding-top: var(--corte);
+  clip-path: polygon(0 var(--corte), 100% 0, 100% 100%, 0 100%);
+}
+
+/* Badge del carrito: retroalimentación visual inmediata al agregar/quitar un producto
+   (además del texto "✓ Agregado" en el botón, que es lo que confirma la acción para
+   quien usa lector de pantalla; el pulso es solo refuerzo, nunca el único indicador). */
+#contadorCarrito.carrito-pulso {
+  animation: carrito-pulso 0.4s ease-out;
+}
+
+@keyframes carrito-pulso {
+  0% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Movimiento: respeta la preferencia del sistema (WCAG 2.3.3 / 2.2.2) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

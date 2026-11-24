@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comercial Elite — Insumos para calzado y marroquinería en Quito</title>
+  <meta name="description" content="Comercial Elite distribuye cueros, sintéticos, suelas, adhesivos, herrajes y herramienta menor para talleres, fábricas y artesanos de calzado en Quito.">
+  <link rel="canonical" href="https://www.comercialelite.com/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Comercial Elite — Insumos para calzado y marroquinería">
+  <meta property="og:description" content="Catálogo de cueros, sintéticos, suelas, adhesivos, herrajes y herramienta menor para talleres y artesanos en Quito.">
+  <meta property="og:locale" content="es_EC">
+  <link rel="icon" href="assets/img/logo-64.png" type="image/png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Comercial Elite",
+    "image": "https://www.comercialelite.com/assets/img/logo.png",
+    "telephone": "+593987855906",
+    "email": "comercialelite313@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Esmeraldas y Venezuela",
+      "addressLocality": "Quito",
+      "addressCountry": "EC"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "06:30", "closes": "17:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "07:00", "closes": "13:30" }
+    ],
+    "url": "https://www.comercialelite.com/index.html"
+  }
+  </script>
+</head>
+<body class="bg-elite-crema font-sans leading-[1.55] text-elite-text antialiased dark:bg-elitenight-bg dark:text-elitenight-text">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="sticky top-0 z-50 bg-elite-ink">
+    <div class="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-5 px-4 py-2.5">
+      <a class="inline-flex items-center gap-3 no-underline" href="index.html">
+        <img class="h-14 w-14 shrink-0" src="assets/img/logo-56.webp" srcset="assets/img/logo-56.webp 1x, assets/img/logo-112.webp 2x" alt="" width="56" height="56">
+        <span class="text-lg font-bold tracking-wide text-white">Comercial Elite</span>
+      </a>
+      <nav class="flex flex-wrap items-center gap-2" aria-label="Principal">
+        <button type="button" class="inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-lg border border-white/30 bg-white/10 px-3 font-semibold text-white md:hidden" id="botonMenu" aria-expanded="false" aria-controls="listaNav">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg> Menú
+        </button>
+        <ul class="hidden w-full flex-col gap-1 border-t border-white/15 pt-3 md:flex md:w-auto md:flex-row md:gap-2 md:border-0 md:pt-0" id="listaNav">
+          <li><a class="flex min-h-11 items-center rounded-full bg-elite-lime px-4 font-bold text-elite-ink no-underline" href="index.html" aria-current="page">Inicio</a></li>
+          <li><a class="flex min-h-11 items-center rounded-full px-4 font-semibold text-elite-lime no-underline hover:bg-white/10" href="catalogo.html">Catálogo</a></li>
+          <li><a class="flex min-h-11 items-center rounded-full px-4 font-semibold text-elite-lime no-underline hover:bg-white/10" href="nosotros.html">Nosotros</a></li>
+        </ul>
+      </nav>
+      <a class="relative inline-flex min-h-11 items-center gap-1.5 font-semibold text-white no-underline hover:text-elite-lime" href="carrito.html" id="enlaceCarrito" aria-label="Lista de cotización, 0 productos">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3"/></svg> Lista de cotización
+        <span class="ml-1 inline-flex min-h-6 min-w-6 items-center justify-center rounded-full bg-elite-lime px-1.5 text-sm font-bold text-elite-ink" id="contadorCarrito" aria-hidden="true">0</span>
+      </a>
+      <a class="inline-flex min-h-11 items-center gap-1.5 font-semibold text-white no-underline hover:text-elite-lime" href="tel:+593987855906">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg> 098&nbsp;785&nbsp;5906
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- Portada en tres pasos para no saturar la primera pantalla (IHC, carga
+         mental): 1) qué vende el sitio, 2) qué hay de nuevo (carrusel), 3) por
+         dónde empezar (líneas). La acción principal queda sola en la franja de
+         cifras: "Ver catálogo completo". -->
+    <section class="portada bg-elite-ink text-white" aria-labelledby="titulo-hero">
+      <div class="mx-auto max-w-6xl px-4 pb-12 pt-8">
+        <p class="mb-2 text-sm font-bold uppercase tracking-[0.15em] text-elite-border">Para talleres, fábricas pequeñas y artesanos</p>
+        <h1 class="mb-2 text-3xl font-bold text-white lg:text-4xl" id="titulo-hero">Insumos para calzado y marroquinería en Quito</h1>
+        <p class="mb-8 max-w-2xl text-elite-tint md:text-lg">Cueros, sintéticos, suelas, hilos, adhesivos, herrajes y herramienta, con precios al día.</p>
+
+        <!-- Carrusel de novedades (patrón "Carousel" de WAI-ARIA APG): botón de
+             pausa visible (WCAG 2.2.2), sin avance automático si el sistema pide
+             reducir el movimiento, y miniaturas para ir directo a cada producto. -->
+        <section class="carrusel" id="carruselNovedades" aria-roledescription="carrusel" aria-labelledby="titulo-novedades">
+          <p class="mb-1 text-sm font-bold uppercase tracking-[0.15em] text-elite-border">Recién ingresados a bodega</p>
+          <h2 class="mb-4 text-2xl font-bold text-white md:text-3xl" id="titulo-novedades">Novedades</h2>
+          <div class="carrusel-marco">
+            <div class="carrusel-diapositivas" id="diapositivasNovedades" aria-live="off">
+              <ul class="carrusel-respaldo">
+                <li><a href="producto.html?id=CE-1042">Nuevo ingreso: Cuero graso natural</a></li>
+                <li><a href="producto.html?id=CE-3006">Nuevo ingreso: Suela EVA liviana</a></li>
+              </ul>
+            </div>
+          </div>
+          <ul class="carrusel-miniaturas" id="miniaturasNovedades" aria-label="Elegir novedad"></ul>
+        </section>
+      </div>
+    </section>
+
+    <section class="border-b border-elite-border bg-white dark:border-elitenight-border dark:bg-elitenight-bg" aria-label="El catálogo en cifras">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-4 py-6">
+        <dl class="m-0 flex flex-wrap gap-x-10 gap-y-3">
+          <div>
+            <dt class="text-sm">Productos</dt>
+            <dd class="m-0 text-3xl font-bold text-elite-dark dark:text-elitenight-dark" id="cifraProductos">16</dd>
+          </div>
+          <div>
+            <dt class="text-sm">Líneas</dt>
+            <dd class="m-0 text-3xl font-bold text-elite-dark dark:text-elitenight-dark" id="cifraLineas">8</dd>
+          </div>
+          <div>
+            <dt class="text-sm">Novedades</dt>
+            <dd class="m-0 text-3xl font-bold text-elite-dark dark:text-elitenight-dark" id="cifraNovedades">2</dd>
+          </div>
+        </dl>
+        <a class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-elite-dark px-6 py-2.5 font-bold text-white no-underline transition hover:bg-elite-ink hover:text-white focus-visible:text-white dark:bg-elitenight-dark dark:text-elitenight-ink dark:hover:text-elitenight-ink dark:focus-visible:text-elitenight-ink" href="catalogo.html">Ver catálogo completo</a>
+      </div>
+    </section>
+
+    <section class="bg-elite-tint/50 py-14 dark:bg-elitenight-bg" aria-labelledby="titulo-lineas">
+      <div class="mx-auto max-w-6xl px-4">
+        <header class="mb-8 max-w-2xl">
+          <h2 class="text-2xl font-bold md:text-3xl" id="titulo-lineas">Explora por línea</h2>
+          <p class="mb-0">Elige una línea y te llevamos al catálogo filtrado.</p>
+        </header>
+      </div>
+      <!-- La fila de tarjetas usa más ancho que el texto (hasta 90rem) para que los
+           nombres de las 8 líneas quepan sin cortarse en escritorio. -->
+      <div class="mx-auto max-w-[90rem] px-4">
+        <ul class="categorias">
+          <li class="categoria" data-cat="cueros">
+            <a href="catalogo.html?cat=cueros">
+              <span class="categoria-foto" aria-hidden="true"><img src="assets/img/ce-1042-cuero-graso.webp" srcset="assets/img/ce-1042-cuero-graso.webp 300w" sizes="(min-width: 80em) 18rem, (min-width: 40em) 25vw, 50vw" alt="" loading="lazy"></span>
+              <div class="categoria-texto">
+                <span class="categoria-detalle">Vacuno</span>
+                <h3>Cueros</h3>
+                <span class="categoria-cantidad"><span data-cantidad>2 productos</span> <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="categoria" data-cat="sinteticos">
+            <a href="catalogo.html?cat=sinteticos">
+              <span class="categoria-foto" aria-hidden="true"><img src="assets/img/ce-2010-sintetico-pu.webp" srcset="assets/img/ce-2010-sintetico-pu-400.webp 400w, assets/img/ce-2010-sintetico-pu.webp 545w" sizes="(min-width: 80em) 18rem, (min-width: 40em) 25vw, 50vw" alt="" loading="lazy"></span>
+              <div class="categoria-texto">
+                <span class="categoria-detalle">Poliuretano · Poliuretano estampado</span>
+                <h3>Sintéticos</h3>
+                <span class="categoria-cantidad"><span data-cantidad>2 productos</span> <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="categoria" data-cat="suelas">
+            <a href="catalogo.html?cat=suelas">
+              <span class="categoria-foto" aria-hidden="true"><img src="assets/img/ce-3005-suela-sr220.webp" srcset="assets/img/ce-3005-suela-sr220-400.webp 400w, assets/img/ce-3005-suela-sr220.webp 860w" sizes="(min-width: 80em) 18rem, (min-width: 40em) 25vw, 50vw" alt="" loading="lazy"></span>
+              <div class="categoria-texto">
+                <span class="categoria-detalle">Caucho · EVA</span>
+                <h3>Suelas</h3>
+                <span class="categoria-cantidad"><span data-cantidad>2 productos</span> <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="categoria" data-cat="plantillas">
+            <a href="catalogo.html?cat=plantillas">
+              <span class="categoria-foto" aria-hidden="true"><img src="assets/img/ce-4001-plantilla-armado.webp" srcset="assets/img/ce-4001-plantilla-armado-400.webp 400w, assets/img/ce-4001-plantilla-armado.webp 800w" sizes="(min-width: 80em) 18rem, (min-width: 40em) 25vw, 50vw" alt="" loading="lazy"></span>
+              <div class="categoria-texto">
+                <span class="categoria-detalle">Armado · Terminado</span>
+                <h3>Plantillas</h3>
+                <span class="categoria-cantidad"><span data-cantidad>2 productos</span> <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="categoria" data-cat="hilos">
+            <a href="catalogo.html?cat=hilos">
+              <span class="categoria-foto" aria-hidden="true"><img src="assets/img/ce-5001-hilo-nylon.webp" srcset="assets/img/ce-5001-hilo-nylon-400.webp 400w, assets/img/ce-5001-hilo-nylon.webp 800w" sizes="(min-width: 80em) 18rem, (min-width: 40em) 25vw, 50vw" alt="" loading="lazy"></span>
+              <div class="categoria-texto">
+                <span class="categoria-detalle">Nylon · Poliéster</span>
+                <h3>Hilos</h3>
+                <span class="categoria-cantidad"><span data-cantidad>2 productos</span> <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="categoria" data-cat="adhesivos">
+            <a href="catalogo.html?cat=adhesivos">
+              <span class="categoria-foto" aria-hidden="true"><img src="assets/img/ce-6001-adhesivo-contacto.webp" srcset="assets/img/ce-6001-adhesivo-contacto-400.webp 400w, assets/img/ce-6001-adhesivo-contacto.webp 800w" sizes="(min-width: 80em) 18rem, (min-width: 40em) 25vw, 50vw" alt="" loading="lazy"></span>
+              <div class="categoria-texto">
+                <span class="categoria-detalle">Contacto · Poliuretano</span>
+                <h3>Adhesivos</h3>
+                <span class="categoria-cantidad"><span data-cantidad>2 productos</span> <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="categoria" data-cat="herrajes">
+            <a href="catalogo.html?cat=herrajes">
+              <span class="categoria-foto" aria-hidden="true"><img src="assets/img/ce-7001-ojalillo.webp" srcset="assets/img/ce-7001-ojalillo-400.webp 400w, assets/img/ce-7001-ojalillo.webp 800w" sizes="(min-width: 80em) 18rem, (min-width: 40em) 25vw, 50vw" alt="" loading="lazy"></span>
+              <div class="categoria-texto">
+                <span class="categoria-detalle">Ojalillos · Hebillas</span>
+                <h3>Herrajes</h3>
+                <span class="categoria-cantidad"><span data-cantidad>2 productos</span> <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="categoria" data-cat="herramientas">
+            <a href="catalogo.html?cat=herramientas">
+              <span class="categoria-foto" aria-hidden="true"><img src="assets/img/ce-8001-cuchilla.webp" srcset="assets/img/ce-8001-cuchilla-400.webp 400w, assets/img/ce-8001-cuchilla.webp 800w" sizes="(min-width: 80em) 18rem, (min-width: 40em) 25vw, 50vw" alt="" loading="lazy"></span>
+              <div class="categoria-texto">
+                <span class="categoria-detalle">Corte · Golpe</span>
+                <h3>Herramienta menor</h3>
+                <span class="categoria-cantidad"><span data-cantidad>2 productos</span> <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="bg-white dark:bg-elitenight-bg" aria-labelledby="titulo-porque">
+      <div class="mx-auto max-w-6xl px-4 py-14">
+        <header class="mb-8">
+          <h2 class="text-2xl font-bold md:text-3xl" id="titulo-porque">Por qué Comercial Elite</h2>
+        </header>
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+          <article class="rounded-lg border border-elite-border border-t-4 border-t-elite-lime bg-white p-6 shadow-[0_1px_3px_rgba(26,26,26,0.12)] dark:border-elitenight-border dark:border-t-elitenight-medium dark:bg-elitenight-bg">
+            <h3 class="flex items-center gap-2 text-lg font-semibold md:text-xl">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-elite dark:text-elitenight" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18.14,8.7 A7.5,7.5 0 1 1 5.86,8.7"/><circle cx="18.14" cy="8.7" r="0.9" fill="currentColor" stroke="none"/><circle cx="5.86" cy="8.7" r="0.9" fill="currentColor" stroke="none"/></svg>
+              Trayectoria local
+            </h3>
+            <p class="mb-0">Más de 20 años surtiendo a talleres y fábricas de calzado en Quito, con relación directa y sin intermediarios.</p>
+          </article>
+          <article class="rounded-lg border border-elite-border border-t-4 border-t-elite-lime bg-white p-6 shadow-[0_1px_3px_rgba(26,26,26,0.12)] dark:border-elitenight-border dark:border-t-elitenight-medium dark:bg-elitenight-bg">
+            <h3 class="flex items-center gap-2 text-lg font-semibold md:text-xl">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-elite dark:text-elitenight" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18.14,8.7 A7.5,7.5 0 1 1 5.86,8.7"/><circle cx="18.14" cy="8.7" r="0.9" fill="currentColor" stroke="none"/><circle cx="5.86" cy="8.7" r="0.9" fill="currentColor" stroke="none"/></svg>
+              Marcas representadas
+            </h3>
+            <p class="mb-0">Distribución oficial de insumos de proveedores reconocidos en cueros, suelas y adhesivos industriales.</p>
+          </article>
+          <article class="rounded-lg border border-elite-border border-t-4 border-t-elite-lime bg-white p-6 shadow-[0_1px_3px_rgba(26,26,26,0.12)] dark:border-elitenight-border dark:border-t-elitenight-medium dark:bg-elitenight-bg">
+            <h3 class="flex items-center gap-2 text-lg font-semibold md:text-xl">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-elite dark:text-elitenight" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18.14,8.7 A7.5,7.5 0 1 1 5.86,8.7"/><circle cx="18.14" cy="8.7" r="0.9" fill="currentColor" stroke="none"/><circle cx="5.86" cy="8.7" r="0.9" fill="currentColor" stroke="none"/></svg>
+              Stock continuo
+            </h3>
+            <p class="mb-0">Reposición constante de las líneas de mayor rotación, con novedades publicadas apenas ingresan a bodega.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cierre: banda lima con corte diagonal que repite el lenguaje de la portada
+         y deja una única acción clara (cotizar). -->
+    <section class="corte-arriba bg-elite-lime text-elite-ink" aria-labelledby="titulo-cta">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-4 pb-12 pt-6">
+        <div class="max-w-xl">
+          <h2 class="mb-2 text-2xl font-bold text-elite-ink md:text-3xl" id="titulo-cta">¿No encuentras lo que buscas?</h2>
+          <p class="mb-0 text-lg">Escríbenos y cotizamos tu pedido de insumos con stock y precio al día.</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-elite-ink px-6 py-2.5 font-bold text-white no-underline transition hover:bg-elite-dark hover:text-white focus-visible:text-white" href="https://wa.me/593987855906?text=Hola%2C%20quiero%20cotizar%20insumos%20de%20Comercial%20Elite" target="_blank" rel="noopener noreferrer">
+            Cotizar por WhatsApp <span class="sr-only">(se abre en una pestaña nueva)</span>
+          </a>
+          <a class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border-2 border-elite-ink px-6 py-2.5 font-bold text-elite-ink no-underline transition-colors hover:bg-elite-ink/10 hover:text-elite-ink focus-visible:text-elite-ink" href="catalogo.html">Ver catálogo completo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-elite-ink py-8 text-white dark:bg-elitenight-tint dark:text-elitenight-text">
+    <div class="mx-auto grid max-w-6xl gap-8 px-4 s45:grid-cols-3">
+      <div>
+        <h2 class="flex items-center gap-2 text-white dark:text-elitenight-dark"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18.14,8.7 A7.5,7.5 0 1 1 5.86,8.7"/><circle cx="18.14" cy="8.7" r="0.9" fill="currentColor" stroke="none"/><circle cx="5.86" cy="8.7" r="0.9" fill="currentColor" stroke="none"/></svg> Comercial Elite</h2>
+        <address class="not-italic">
+          Calle Esmeraldas y Venezuela, Quito, Ecuador<br>
+          <a class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark" href="tel:+593987855906">098&nbsp;785&nbsp;5906</a> (WhatsApp)<br>
+          <a class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark" href="mailto:comercialelite313@gmail.com">comercialelite313@gmail.com</a>
+        </address>
+      </div>
+      <div>
+        <h2 class="text-white dark:text-elitenight-dark">Horario</h2>
+        <ul>
+          <li>Lunes a viernes: 06:30 – 17:30</li>
+          <li>Sábado: 07:00 – 13:30</li>
+        </ul>
+        <p class="mb-0"><a class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark" href="assets/catalogo.pdf">Descargar catálogo (PDF, 1 KB)</a></p>
+      </div>
+      <div>
+        <h2 class="text-white dark:text-elitenight-dark">Síguenos</h2>
+        <ul class="flex flex-wrap gap-3">
+          <li><a class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark" href="https://www.facebook.com/comercialelite" target="_blank" rel="noopener noreferrer">Facebook <span class="sr-only">(se abre en una pestaña nueva)</span></a></li>
+          <li><a class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark" href="https://www.instagram.com/comercialelite" target="_blank" rel="noopener noreferrer">Instagram <span class="sr-only">(se abre en una pestaña nueva)</span></a></li>
+        </ul>
+        <p class="mb-0"><a class="text-white hover:text-elite-lime focus-visible:text-elite-lime dark:text-elitenight-text dark:hover:text-elitenight-dark dark:focus-visible:text-elitenight-dark" href="nosotros.html#comprar-en-persona">Cómo llegar y comprar en persona</a></p>
+      </div>
+    </div>
+    <div class="mx-auto mt-8 max-w-6xl border-t border-white/25 px-4 pt-5 text-sm">
+      <p class="mb-0">© 2026 Comercial Elite. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/encabezado.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/inicio.js"></script>
+</body>
+</html>
