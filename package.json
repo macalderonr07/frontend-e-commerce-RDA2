@@ -12,7 +12,7 @@
     "preparar-sitio": "node scripts/preparar-sitio.mjs"
   },
   "devDependencies": {
-    "axe-core": "^4.13.0",
+    "axe-core": "^4.14.1",
     "html-validate": "^11.16.2",
     "playwright": "^1.63.0"
   }
