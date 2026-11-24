@@ -164,6 +164,17 @@ try {
   });
   const tarjetasVisibles = () => pagina.locator("#rejillaProductos > li:not([hidden])").count();
 
+  await prueba("Header: acceso a la administración en todas las páginas (local -> :8090)", async () => {
+    for (const ruta of Object.keys(LISTA)) {
+      await pagina.goto(BASE + ruta);
+      const enlace = pagina.getByRole("link", { name: "Administración" });
+      esperar((await enlace.count()) === 1, `${ruta}: no hay un enlace "Administración" en el header`);
+      const destino = await enlace.getAttribute("href");
+      esperar(destino === "http://localhost:8090/", `${ruta}: en local apunta a ${destino}`);
+      esperar(await enlace.evaluate((a) => a.closest("header nav") !== null), `${ruta}: el enlace no está en la navegación del header`);
+    }
+  });
+
   await prueba("Catálogo: muestra todos los productos del JSON", async () => {
     await pagina.goto(BASE + "catalogo.html");
     await pagina.waitForSelector("#rejillaProductos:not([aria-busy]) li", { state: "attached" });
