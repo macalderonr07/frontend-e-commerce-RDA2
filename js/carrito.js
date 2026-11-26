@@ -168,7 +168,7 @@
     const campoCantidad = document.createElement("input");
     campoCantidad.type = "number";
     campoCantidad.min = "1";
-    // el cuero por pie² admite cuartos (1.25...): la base valida el incremento
+    // el cuero por pie² admite cualquier decimal (1.37...): la base valida el incremento
     campoCantidad.step = "any";
     if (item.stock) campoCantidad.max = String(item.stock);
     campoCantidad.value = String(item.cantidad);
@@ -268,9 +268,11 @@
     time.dateTime = pedido.fecha;
     time.textContent = fecha;
     const total = document.createElement("strong");
-    total.textContent = formatearMoneda(pedido.total);
+    total.textContent = formatearMoneda(pedido.total ?? 0);
     const solicitante = pedido.nombre ? ` — ${pedido.nombre}` : "";
-    const origen = pedido.idPedido ? ` (pedido web #${pedido.idPedido})` : ` (enviado por ${medio})`;
+    const origen = pedido.numeroCotizacion
+      ? ` (cotización ${pedido.numeroCotizacion})`
+      : pedido.idPedido ? ` (pedido web #${pedido.idPedido})` : ` (enviado por ${medio})`;
     resumen.append(time, `${solicitante} — ${cantidadProductos} — `, total, origen);
 
     // Pedido real en la base: su estado actual lo dice la tienda, no este navegador
@@ -388,12 +390,12 @@
     estadoCheckout.textContent = texto;
   }
 
-  function construirMensajePedido(nombre, carrito, idPedido = null) {
+  function construirMensajePedido(nombre, carrito, numeroCotizacion = null) {
     const lineas = carrito.items.map((item) => {
       const color = item.color ? `, color ${item.color}` : "";
       return `${item.nombre} (${item.codigo}${color}) — ${item.presentacion} x${item.cantidad} — ${formatearMoneda(item.subtotal)}`;
     });
-    const encabezado = idPedido ? `Pedido web #${idPedido} — Comercial Elite` : "Cotización Comercial Elite";
+    const encabezado = numeroCotizacion ? `Cotización ${numeroCotizacion} — Comercial Elite` : "Cotización Comercial Elite";
     const ahorro = carrito.ahorro > 0 ? `\nIncluye descuento por volumen: -${formatearMoneda(carrito.ahorro)}` : "";
     const nota = campoMensajeCheckout.value.trim();
     return (
@@ -435,16 +437,19 @@
       `Contacto preferido: ${medio === "whatsapp" ? "WhatsApp" : "correo"}${nota ? `. Mensaje: ${nota}` : ""}`
     )
       .then(({ pedido, tokenPedido }) => {
-        const mensaje = construirMensajePedido(nombre, carrito, pedido.idPedido);
+        // La tienda registra una COTIZACION (venta por confirmar): el personal la
+        // revisa y la confirma; vence a los 14 dias si no se confirma.
+        const mensaje = construirMensajePedido(nombre, carrito, pedido.numeroCotizacion);
+        const vence = pedido.vence ? new Date(pedido.vence).toLocaleDateString("es-EC", { day: "numeric", month: "long" }) : null;
         if (medio === "whatsapp") {
           const numero = empresa.telefono.replace(/\D/g, "");
           window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, "_blank", "noopener");
         } else {
-          const asunto = encodeURIComponent(`Pedido web #${pedido.idPedido} — Comercial Elite`);
+          const asunto = encodeURIComponent(`Cotización ${pedido.numeroCotizacion ?? ""} — Comercial Elite`);
           window.location.href = `mailto:${empresa.correo}?subject=${asunto}&body=${encodeURIComponent(mensaje)}`;
         }
         mostrarEstadoCheckout(
-          `Tu pedido web #${pedido.idPedido} quedó registrado en la tienda (${(pedido.estadoNombre ?? "pendiente").toLowerCase()}) por ${formatearMoneda(pedido.total)}. Te contactaremos para coordinar el pago y la entrega.`,
+          `Tu cotización ${pedido.numeroCotizacion ?? ""} quedó registrada por ${formatearMoneda(carrito.total)} (referencial). Te contactaremos para confirmarla y coordinar el pago y la entrega${vence ? `; es válida hasta el ${vence}` : ""}.`,
           false
         );
         // Copia local para el historial; si falla, el pedido igual está en la base
@@ -454,15 +459,16 @@
             nombre,
             medio,
             items: itemsEnviados,
-            total: pedido.total,
+            total: pedido.total ?? carrito.total,
             idPedido: pedido.idPedido,
+            numeroCotizacion: pedido.numeroCotizacion ?? null,
             tokenPedido,
           })
           .then(renderizarHistorial)
           .catch(() => {});
       })
       .catch((error) =>
-        mostrarEstadoCheckout(error.mensaje ?? "No se pudo registrar el pedido. Intenta de nuevo.", true)
+        mostrarEstadoCheckout(error.mensaje ?? "No se pudo enviar la cotización. Intenta de nuevo.", true)
       );
   }
 

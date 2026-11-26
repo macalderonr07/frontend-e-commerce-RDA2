@@ -228,9 +228,9 @@
       bandaElegida = piezas.find((p) => p.idLote === bandaElegida?.idLote) ?? piezas[piezas.length - 1] ?? null;
       const saldo = bandaElegida?.saldo ?? 0;
       const detal = presDetalDe(seleccion.color);
-      // El cuero se vende de 0.25 en 0.25 pie²: la media banda (y una banda con
-      // medida rara) se redondea HACIA ABAJO al cuarto, nunca se entrega de más.
-      const paso = detal?.incremento ?? 0.25;
+      // La media banda se redondea HACIA ABAJO al incremento del cuero (hoy 0.01:
+      // cualquier decimal), nunca se entrega de más.
+      const paso = detal?.incremento ?? 0.01;
       const aCuartos = (n) => Math.floor(n / paso + 1e-9) * paso;
       const cantidad = modoPieza === "banda" ? aCuartos(saldo) : aCuartos(saldo / 2);
       const banda = presBandaDe(seleccion.color);
@@ -456,7 +456,7 @@
       // Por pieza: lo máximo de una línea es lo que le queda a la banda más grande
       if (porPieza) {
         const mayor = Math.max(0, ...piezasDe(pres).map((p) => p.saldo)) / (pres.factor ?? 1);
-        const paso = pasoDe(pres); // en cuartos de pie², no en enteros
+        const paso = pasoDe(pres); // el incremento de la forma de venta (cuero: 0.01)
         return Math.round(Math.floor(mayor / paso + 1e-9) * paso * 1000) / 1000;
       }
       return Math.max(0, pres.disponible - (enCarrito.get(String(pres.id)) ?? 0));
@@ -465,7 +465,7 @@
       lista.some((p) => p.disponible == null) ? null : lista.reduce((s, p) => s + p.disponible, 0);
 
     // Cada presentación se vende en múltiplos de su incremento (lo dice la base):
-    // el cuero por pie² va de 0.25 en 0.25 (1, 1.25, 1.5, 1.75...), lo demás en
+    // el cuero por pie² admite cualquier decimal (incremento 0.01), lo demás en
     // enteros. Lo que se escriba se lleva al múltiplo más cercano.
     const pasoDe = (pres) => pres?.incremento ?? 1;
     function leerCantidad() {
@@ -695,15 +695,17 @@
         presentaciones[0]
     );
 
-    // Los botones suben y bajan de a un incremento (un cuarto de pie² en el cuero)
+    // Los botones suben y bajan de a un incremento. Si se admite cualquier decimal
+    // (incremento menor a 0.1, el cuero), los botones van de a 1 y el decimal se escribe.
     const redondear3 = (n) => Math.round(n * 1000) / 1000;
+    const pasoBoton = (pres) => (pasoDe(pres) < 0.1 ? 1 : pasoDe(pres));
     botonRestar.addEventListener("click", () => {
-      campoCantidad.value = Math.max(Number(campoCantidad.min) || 1, redondear3(leerCantidad() - pasoDe(seleccion)));
+      campoCantidad.value = Math.max(Number(campoCantidad.min) || 1, redondear3(leerCantidad() - pasoBoton(seleccion)));
       pintarSeleccion();
     });
     botonSumar.addEventListener("click", () => {
       const quedan = restante(seleccion);
-      const siguiente = redondear3(leerCantidad() + pasoDe(seleccion));
+      const siguiente = redondear3(leerCantidad() + pasoBoton(seleccion));
       campoCantidad.value = quedan === null ? siguiente : Math.min(quedan, siguiente);
       pintarSeleccion();
     });

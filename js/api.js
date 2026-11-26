@@ -126,7 +126,7 @@
         oferta: x.oferta,
         disponible: x.disponible,
         cantidadMinima: x.cantidadMinima,
-        // la cantidad va en múltiplos de esto (cuero por pie²: 0.25; lo demás: 1)
+        // la cantidad va en múltiplos de esto (cuero por pie²: 0.01; lo demás: 1)
         incremento: x.incremento ?? 1,
         factor: x.factor ?? 1,
         corteDe: x.corteDe ?? null, // fibra: de que pieza sale este corte (dos ramas: fracciones y pies)
